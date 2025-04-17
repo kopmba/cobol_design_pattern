@@ -65,7 +65,7 @@
        *> 01 LS-RESULT. (all pic)
        01 LS-APPLY-CASE PIC x(1) value 'N'.
        *> A for abstract, N for simple inherit, I for interface where A & I depend of check-method and checker
-       PROCEDURE DIVISION USING LS-OBJ LS-METHOD-NAME LS-APPLY-CASE *>LS-RESULT*.
+       PROCEDURE DIVISION USING LS-OBJ LS-METHOD-NAME LS-APPLY-CASE. *>LS-RESULT*.
        000-Main.
             IF LS-APPLY-CASE = 'N'
                CALL LS-METHOD-NAME USING LS-OBJ
