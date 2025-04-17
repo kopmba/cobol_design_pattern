@@ -44,7 +44,7 @@
                10 ARRAY-ELEMENT PIC X(10) OCCURS 5 TIMES.
        PROCEDURE DIVISION USING LS-PROP RETURNING LS-RESULT.
        000-Main.
-            MOVE LS-PROP TO ELEMENT(1)
+            MOVE LS-PROP TO ELEMENT(1) *> optimisation : fonction de calcul de la taille du tableau
             STOP RUN.
        END PROGRAM COLLECT.
 
@@ -53,7 +53,7 @@
        DATA DIVISION.
        FILE SECTION.
        WORKING-STORAGE SECTION.
-       01 RESULT PIC X(44). *> Suivant LS-RESULT on retourne la fonction correspondante à optimiser
+       01 RESULT PIC X(44). *> Suivant LS-RESULT(type) on retourne la fonction correspondante [à optimiser]
        LINKAGE SECTION.
        01 LS-OBJ.
            05 RES-PARENT.
@@ -62,9 +62,10 @@
            05 RES-PROPERTIES.
                10 ARRAY-ELEMENT PIC X(10) OCCURS 5 TIMES.
        01 LS-METHOD-NAME PIC x(50).
+       *> 01 LS-RESULT. (all pic)
        01 LS-APPLY-CASE PIC x(1) value 'N'.
        *> A for abstract, N for simple inherit, I for interface where A & I depend of check-method and checker
-       PROCEDURE DIVISION USING LS-OBJ LS-METHOD-NAME LS-APPLY-CASE.
+       PROCEDURE DIVISION USING LS-OBJ LS-METHOD-NAME LS-APPLY-CASE *>LS-RESULT*.
        000-Main.
             IF LS-APPLY-CASE = 'N'
                CALL LS-METHOD-NAME USING LS-OBJ
@@ -81,7 +82,7 @@
 
        PROCEDURE DIVISION.
        MAIN-PROCEDURE.
-            *>DISPLAY "Verifie si la methode du parent existe à la creation de l'instance"
+            *>DISPLAY "Verifie si la methode abstraite du parent existe à la creation de l'instance"
             STOP RUN.
        END PROGRAM Check-Method.
 
