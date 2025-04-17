@@ -1,4 +1,4 @@
-# cobol_design_pattern
+# cobolexample
 define a helper to apply basic oop concept in cobol
 
 The code of many files from others directory are manual operation provided by deepseek prompt and jdoodle :
