@@ -13,7 +13,7 @@
        DATA DIVISION.
        FILE SECTION.
        WORKING-STORAGE SECTION.
-       *>01 RESULT PIC X(44). *> Suivant LS-RESULT on retourne la fonction correspondante à optimiser
+       *>01 RESULT PIC X(44). *> Suivant LS-RESULT on retourne la fonction correspondante Ã  optimiser
        01 RESULT.
            05 STR PIC x(100).
            05 NUM PIC 9(9).
@@ -42,7 +42,7 @@
 
             IF LS-APPLY = 'A' OR LS-APPLY = 'I'
                MOVE CLASSNAME-PARENT OF RES-PARENT OF LS-OBJ TO FNAME
-               MOVE CONCATENATE(LOWER-CASE(FNAME), ".cbl") TO FNAME
+               *>MOVE CONCATENATE(LOWER-CASE(FNAME), ".cbl") TO FNAME
                CALL "CHECK-METHOD" USING LS-METHOD-NAME FNAME GIVING LEN
                IF LEN > 0
                    CALL LS-METHOD-NAME USING LS-OBJ
