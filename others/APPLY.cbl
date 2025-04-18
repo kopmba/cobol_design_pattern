@@ -48,7 +48,6 @@
                    CALL LS-METHOD-NAME USING LS-OBJ
                ELSE
                    DISPLAY "The method does not exist in parent class"
-                   DISPLAY "Unable to create an instance"
                END-IF
             END-IF.
 
